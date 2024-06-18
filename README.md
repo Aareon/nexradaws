@@ -27,6 +27,13 @@ Docs - http://nexradaws.readthedocs.io/en/latest/
 
     pip install nexradaws2
 
+New in version 2.1:
+* Give logger a name and configure manually for better control, buidling on version 2.0.
+* Bump version
+* Fix tests importing original package
+* Fix examples importing original package
+* Update README
+
 New in version 2.0:
 * Replace `six.print_` with usage of `logging` to offer more granular control of logging.
 * Future time checks. Thanks @nguy (Nick Guy) for your fork!
