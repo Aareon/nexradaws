@@ -1,8 +1,26 @@
+import os
 import setuptools
+
+# Read version and author info from ./nexradaws/__init__.py
+current_file = __file__
+absolute_path = os.path.abspath(current_file)
+this_directory = os.path.dirname(absolute_path)
+nexradaws_init_path = os.path.join(this_directory, "nexradaws", "__init__.py")
+
+try:
+    with open(nexradaws_init_path) as f:
+        for l in f.readlines():
+            if l.startswith("__authors__"):
+                authors = l.split("= ")[1].lstrip("(").rstrip(",)\n").replace("'", "")
+            if l.startswith("__version__"):
+                version = l.split("= ")[1].strip()
+except Exception as e:
+    raise
+#
 
 setuptools.setup(
     name='nexradaws',
-    version='1.1',
+    version=version,
     packages=['nexradaws','nexradaws.resources'],
     description= 'Query and download NEXRAD data from AWS S3 storage.',
     long_description= '''This module is designed to allow you to query and download Nexrad
@@ -38,7 +56,7 @@ Docs - http://nexradaws.readthedocs.io/en/latest/
 * Bug fix for varying filename extensions over the years (.gz .V06 etc). Thanks Nick Guy for the PR!''',
     url='https://github.com/aarande/nexradaws',
     license='MIT',
-    author='Aaron Anderson',
+    author=authors,
     author_email='aaron.anderson74@yahoo.com',
     keywords='weather,radar,nexrad,aws,amazon',
     download_url='https://github.com/aarande/nexradaws/archive/1.1.tar.gz',
