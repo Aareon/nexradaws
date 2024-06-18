@@ -30,7 +30,7 @@ setuptools.setup(
     url='https://github.com/Aareon/nexradaws',
     license='MIT',
     author=authors,
-    author_email='aaron.anderson74@yahoo.com',
+    author_email='askully13@gmail.com',
     keywords='weather,radar,nexrad,aws,amazon',
     download_url='https://github.com/Aareon/nexradaws/archive/2.0.tar.gz',
     install_requires=['boto3','pytz','six'],
