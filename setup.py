@@ -18,42 +18,15 @@ except Exception as e:
     raise
 #
 
+with open(os.path.join(absolute_path, "README.md")) as f:
+    long_description = f.read()
+
 setuptools.setup(
     name='nexradaws2',
     version=version,
     packages=['nexradaws2','nexradaws2.resources'],
     description= 'Query and download NEXRAD data from AWS S3 storage.',
-    long_description= '''This module is designed to allow you to query and download Nexrad
-radar files from Amazon Web Services S3 Storage. The real-time feed and full historical archive of original
-resolution (Level II) NEXRAD data, from June 1991 to present, is now freely available on Amazon S3 for anyone to use.
-More information can be found here https://aws.amazon.com/public-datasets/nexrad/.
-
-If pyart is installed nexradaws allows you to quickly get pyart objects of downloaded files.
-
-nexradaws supports Python 2.7 and Python 3.6.
-
-Github - https://github.com/Aareon/nexradaws
-
-PyPi - https://pypi.python.org/pypi/nexradaws2
-
-Docs - http://nexradaws.readthedocs.io/en/latest/
-
-**Required dependencies**
-
-* boto3
-* pytz
-* six
-
-**Optional dependencies**
-
-* pyart
-
-**Install with pip**::
-
-    pip install nexradaws
-
-**Version 1.1**
-* Bug fix for varying filename extensions over the years (.gz .V06 etc). Thanks Nick Guy for the PR!''',
+    long_description=long_description,
     url='https://github.com/aarande/nexradaws',
     license='MIT',
     author=authors,
