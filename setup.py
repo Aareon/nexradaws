@@ -18,7 +18,7 @@ except Exception as e:
     raise
 #
 
-with open(os.path.join(absolute_path, "README.md")) as f:
+with open(os.path.join(this_directory, "README.md")) as f:
     long_description = f.read()
 
 setuptools.setup(
