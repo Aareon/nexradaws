@@ -27,7 +27,7 @@ setuptools.setup(
     packages=['nexradaws2','nexradaws2.resources'],
     description= 'Query and download NEXRAD data from AWS S3 storage.',
     long_description=long_description,
-    url='https://github.com/aarande/nexradaws',
+    url='https://github.com/Aareon/nexradaws',
     license='MIT',
     author=authors,
     author_email='aaron.anderson74@yahoo.com',
