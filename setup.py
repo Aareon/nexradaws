@@ -13,7 +13,7 @@ try:
             if l.startswith("__authors__"):
                 authors = l.split("= ")[1].lstrip("(").rstrip(",)\n").replace("'", "")
             if l.startswith("__version__"):
-                version = l.split("= ")[1].strip()
+                version = float(l.split("= ")[1].strip())
 except Exception as e:
     raise
 #
