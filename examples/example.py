@@ -1,6 +1,6 @@
 import six
-import nexradaws
-conn = nexradaws.NexradAwsInterface()
+import nexradaws2
+conn = nexradaws2.NexradAwsInterface()
 six.print_(conn.get_avail_years())
 six.print_(conn.get_avail_months('2013'))
 six.print_(conn.get_avail_days('2013', '05'))
