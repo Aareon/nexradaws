@@ -1,6 +1,8 @@
 import os
+import sys
 import re
 from datetime import datetime, timedelta, timezone
+import logging
 
 import boto3
 import errno
@@ -12,6 +14,11 @@ from .resources.downloadresults import DownloadResults
 from .resources.localnexradfile import LocalNexradFile
 from .resources.awsnexradfile import AwsNexradFile
 import concurrent.futures
+
+# Configure logger
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# https://bugs.python.org/issue13235
+log_warn = logging.warning if sys.version_info.major == 3 and sys.version_info.minor >= 3 else logging.warn
 
 class NexradAwsInterface(object):
     """
@@ -195,7 +202,7 @@ class NexradAwsInterface(object):
             raise ValueError("Future start date specified, please check start input")
         if self._is_future(utcend):
             utcend = datetime.now(timezone.utc)
-            six.print_("Future end date specified, changing to current time")
+            log_warn("Future end date specified, changing to current time")
 
         for day in self._datetime_range(utcstart, utcend):
             if self._is_future(day):
@@ -242,14 +249,14 @@ class NexradAwsInterface(object):
                 try:
                     result = future.result()
                     localfiles.append(result)
-                    six.print_("Downloaded {}".format(result.filename))
+                    logging.info("Downloaded {}".format(result.filename))
                 except NexradAwsDownloadError:
                     error = future.exception()
                     errors.append(error.awsnexradfile)
         # Sort returned list of NexradLocalFile objects by the scan_time
         localfiles.sort(key=lambda x:x.scan_time)
         downloadresults = DownloadResults(localfiles,errors)
-        six.print_('{} out of {} files downloaded...{} errors'.format(downloadresults.success_count,
+        logging.info('{} out of {} files downloaded...{} errors'.format(downloadresults.success_count,
                                                                       downloadresults.total,
                                                                       downloadresults.failed_count))
         return downloadresults
