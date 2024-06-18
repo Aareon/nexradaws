@@ -1,3 +1,3 @@
-__author__ = 'Aaron Anderson'
-__version__ = "1.1"
+__authors__ = ('Aaron Anderson', 'Aareon Sullivan',)
+__version__ = "2.0"
 from .nexradawsinterface import NexradAwsInterface
