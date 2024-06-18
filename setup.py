@@ -5,7 +5,7 @@ import setuptools
 current_file = __file__
 absolute_path = os.path.abspath(current_file)
 this_directory = os.path.dirname(absolute_path)
-nexradaws_init_path = os.path.join(this_directory, "nexradaws", "__init__.py")
+nexradaws_init_path = os.path.join(this_directory, "nexradaws2", "__init__.py")
 
 try:
     with open(nexradaws_init_path) as f:
