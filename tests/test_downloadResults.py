@@ -5,14 +5,14 @@ from datetime import datetime
 
 import shutil
 
-import nexradaws
-from nexradaws.resources.localnexradfile import LocalNexradFile
-from nexradaws.resources.awsnexradfile import AwsNexradFile
+import nexradaws2
+from nexradaws2.resources.localnexradfile import LocalNexradFile
+from nexradaws2.resources.awsnexradfile import AwsNexradFile
 
 
 class TestDownloadResults(TestCase):
     def setUp(self):
-        self.query = nexradaws.NexradAwsInterface()
+        self.query = nexradaws2.NexradAwsInterface()
         self.templocation = tempfile.mkdtemp()
         start = datetime(2013, 5, 20, 18, 45)
         end = datetime(2013, 5, 20, 19, 00)

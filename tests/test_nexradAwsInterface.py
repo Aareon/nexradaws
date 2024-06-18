@@ -7,8 +7,8 @@ import pytz
 import six
 from datetime import datetime
 
-import nexradaws
-from nexradaws.resources.awsnexradfile import AwsNexradFile
+import nexradaws2
+from nexradaws2.resources.awsnexradfile import AwsNexradFile
 
 try:
     import pyart
@@ -24,7 +24,7 @@ exampledaysleapyear = ['{0:0>2}'.format(x) for x in range(1, 30)]
 
 class TestNexradAwsInterface(TestCase):
     def setUp(self):
-        self.query = nexradaws.NexradAwsInterface()
+        self.query = nexradaws2.NexradAwsInterface()
         self.templocation = tempfile.mkdtemp()
 
     def tearDown(self):
