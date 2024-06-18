@@ -16,7 +16,18 @@ from .resources.awsnexradfile import AwsNexradFile
 import concurrent.futures
 
 # Configure logger
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(formatter)
+
+logger.addHandler(console_handler)
+
+
 # https://bugs.python.org/issue13235
 log_warn = logging.warning if sys.version_info.major == 3 and sys.version_info.minor >= 3 else logging.warn
 
